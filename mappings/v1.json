@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "version": "v1",
+    "createdAt": "2026-09-02",
+    "author": "CisTisp Prototype"
+  },
+  "mappings": {
+    "Livscyklus": {
+      "Active": {
+        "Middel": {
+          "20": [
+            { "fundId": "Risikofond-4", "secId": "MOCK-SECID-004", "weight": 0.4 },
+            { "fundId": "Risikofond-5", "secId": "MOCK-SECID-005", "weight": 0.6 }
+          ]
+        }
+      }
+    },
+    "Fastprofil": {
+      "Active": {
+        "Middel": {
+          "20": [
+            { "fundId": "FP-Risikofond-1", "secId": "MOCK-SECID-101", "weight": 0.5 },
+            { "fundId": "FP-Risikofond-2", "secId": "MOCK-SECID-102", "weight": 0.5 }
+          ]
+        }
+      }
+    },
+    "Gennemsnitsrente": {
+      "APStabil": {
+        "default": [
+          { "fundId": "AP-Stabil", "secId": "MOCK-SECID-APSTAB", "weight": 1.0 }
+        ]
+      }
+    },
+    "Selvvælger": {
+      "slots": [
+        { "slotId": 1, "displayName": "Slot 1", "boundFundId": null, "secId": null },
+        { "slotId": 2, "displayName": "Slot 2", "boundFundId": null, "secId": null },
+        { "slotId": 3, "displayName": "Slot 3", "boundFundId": null, "secId": null },
+        { "slotId": 4, "displayName": "Slot 4", "boundFundId": null, "secId": null },
+        { "slotId": 5, "displayName": "Slot 5", "boundFundId": null, "secId": null },
+        { "slotId": 6, "displayName": "Slot 6", "boundFundId": null, "secId": null },
+        { "slotId": 7, "displayName": "Slot 7", "boundFundId": null, "secId": null },
+        { "slotId": 8, "displayName": "Slot 8", "boundFundId": null, "secId": null },
+        { "slotId": 9, "displayName": "Slot 9", "boundFundId": null, "secId": null },
+        { "slotId": 10, "displayName": "Slot 10", "boundFundId": null, "secId": null },
+        { "slotId": 11, "displayName": "Slot 11", "boundFundId": null, "secId": null },
+        { "slotId": 12, "displayName": "Slot 12", "boundFundId": null, "secId": null },
+        { "slotId": 13, "displayName": "Slot 13", "boundFundId": null, "secId": null },
+        { "slotId": 14, "displayName": "Slot 14", "boundFundId": null, "secId": null },
+        { "slotId": 15, "displayName": "Slot 15", "boundFundId": null, "secId": null },
+        { "slotId": 16, "displayName": "Slot 16", "boundFundId": null, "secId": null },
+        { "slotId": 17, "displayName": "Slot 17", "boundFundId": null, "secId": null },
+        { "slotId": 18, "displayName": "Slot 18", "boundFundId": null, "secId": null },
+        { "slotId": 19, "displayName": "Slot 19", "boundFundId": null, "secId": null },
+        { "slotId": 20, "displayName": "Slot 20", "boundFundId": null, "secId": null },
+        { "slotId": 21, "displayName": "Slot 21", "boundFundId": null, "secId": null },
+        { "slotId": 22, "displayName": "Slot 22", "boundFundId": null, "secId": null },
+        { "slotId": 23, "displayName": "Slot 23", "boundFundId": null, "secId": null },
+        { "slotId": 24, "displayName": "Slot 24", "boundFundId": null, "secId": null },
+        { "slotId": 25, "displayName": "Slot 25", "boundFundId": null, "secId": null },
+        { "slotId": 26, "displayName": "Slot 26", "boundFundId": null, "secId": null },
+        { "slotId": 27, "displayName": "Slot 27", "boundFundId": null, "secId": null },
+        { "slotId": 28, "displayName": "Slot 28", "boundFundId": null, "secId": null },
+        { "slotId": 29, "displayName": "Slot 29", "boundFundId": null, "secId": null },
+        { "slotId": 30, "displayName": "Slot 30", "boundFundId": null, "secId": null },
+        { "slotId": 31, "displayName": "Slot 31", "boundFundId": null, "secId": null },
+        { "slotId": 32, "displayName": "Slot 32", "boundFundId": null, "secId": null }
+      ]
+    }
+  }
+}

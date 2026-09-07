@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CisTisp Mappings v1 Schema",
+  "type": "object",
+  "required": ["metadata", "mappings"],
+  "additionalProperties": false,
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["version", "createdAt"],
+      "properties": {
+        "version": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date" },
+        "author": { "type": "string" }
+      }
+    },
+    "mappings": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "Livscyklus": { "type": "object" },
+        "Fastprofil": { "type": "object" },
+        "Gennemsnitsrente": { "type": "object" },
+        "Selvvælger": {
+          "type": "object",
+          "properties": {
+            "slots": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["slotId", "displayName", "boundFundId", "secId"],
+                "properties": {
+                  "slotId": { "type": "integer" },
+                  "displayName": { "type": "string" },
+                  "boundFundId": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
+                  "secId": { "oneOf": [{ "type": "string" }, { "type": "null" }] }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

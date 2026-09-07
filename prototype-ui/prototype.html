@@ -1,0 +1,968 @@
+﻿<!doctype html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CisTisp · Porteføljeoversætter</title>
+    <style>
+        :root {
+            --bg: #f4f8f7;
+            --card: #fff;
+            --ink: #17313a;
+            --muted: #71848a;
+            --line: #dce9e7;
+            --teal: #087f79;
+            --dark: #075e5b;
+            --light: #eef7f4;
+            --error: #fff0ec
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 14px/1.45 system-ui,sans-serif
+        }
+
+        button, input, select {
+            font: inherit
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        .app {
+            max-width: 1400px;
+            margin: auto;
+            padding: 32px
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 20px;
+            margin-bottom: 28px
+        }
+
+        .brand {
+            display: flex;
+            gap: 13px;
+            align-items: center
+        }
+
+        .logo {
+            background: var(--teal);
+            color: #fff;
+            border-radius: 13px;
+            padding: 10px 14px;
+            font-size: 22px;
+            font-weight: 800
+        }
+
+        .eyebrow {
+            color: var(--teal);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase
+        }
+
+        h1, h2, h3, p {
+            margin: 0
+        }
+
+        h1 {
+            font-size: 28px;
+            letter-spacing: -.04em
+        }
+
+        h2 {
+            font-size: 17px
+        }
+
+        .sub, small {
+            color: var(--muted)
+        }
+
+        .actions {
+            display: flex;
+            gap: 9px
+        }
+
+        .btn {
+            border: 0;
+            border-radius: 9px;
+            padding: 10px 14px;
+            background: #e5efed;
+            font-weight: 700;
+            color: var(--ink)
+        }
+
+            .btn.primary {
+                background: var(--teal);
+                color: #fff
+            }
+
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(320px,1fr));
+            gap: 18px;
+            align-items: start
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            box-shadow: 0 12px 35px #17343d12;
+            overflow: hidden
+        }
+
+        .head {
+            padding: 18px 20px 14px;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between
+        }
+
+        .body {
+            padding: 18px 20px
+        }
+
+        .step {
+            background: var(--teal);
+            color: #fff;
+            border-radius: 6px;
+            padding: 3px 7px;
+            font-size: 10px;
+            font-weight: 800
+        }
+
+        .total {
+            background: #f0f7f5;
+            border: 1px solid #d8ece7;
+            border-radius: 11px;
+            padding: 14px;
+            margin-bottom: 16px
+        }
+
+            .total strong {
+                font-size: 24px
+            }
+
+            .total small {
+                display: block;
+                margin: 3px 0 9px
+            }
+
+        label {
+            display: block;
+            color: #4d6269;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 0 0 5px
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cddddd;
+            border-radius: 8px;
+            background: #fbfdfc;
+            color: var(--ink)
+        }
+
+        .choice, .translation {
+            border: 1px solid var(--line);
+            border-radius: 11px;
+            padding: 13px;
+            margin-bottom: 10px;
+            position: relative
+        }
+
+            .choice h3 {
+                font-size: 14px;
+                margin: 0 0 10px
+            }
+
+                .choice h3:before {
+                    content: "";
+                    display: inline-block;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: #f18b59;
+                    margin-right: 8px
+                }
+
+        .close {
+            position: absolute;
+            right: 8px;
+            top: 6px;
+            border: 0;
+            background: none;
+            color: #9babad;
+            font-size: 19px
+        }
+
+        .twocol {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .field {
+            margin-bottom: 12px
+        }
+
+        .pill {
+            background: var(--light);
+            color: var(--dark);
+            border-radius: 20px;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 800
+        }
+
+        .translation {
+            padding: 0;
+            overflow: hidden
+        }
+
+        .transhead {
+            background: #f5faf8;
+            padding: 11px 13px;
+            display: flex;
+            justify-content: space-between
+        }
+
+        .rule {
+            padding: 9px 13px;
+            color: #607378;
+            font-size: 12px
+        }
+
+        .fund {
+            padding: 8px 13px;
+            border-top: 1px solid #edf3f2;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 12px
+        }
+
+            .fund b {
+                color: var(--teal)
+            }
+
+        .notice {
+            padding: 11px;
+            border-radius: 9px;
+            background: #edf7f7;
+            color: #286865;
+            font-size: 12px;
+            margin: 10px
+        }
+
+        .error {
+            background: var(--error);
+            color: #a94435;
+            border: 1px solid #f7d4ca;
+            margin: 0 0 13px
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px
+        }
+
+        .metric {
+            background: #f6faf9;
+            border-radius: 10px;
+            padding: 12px
+        }
+
+            .metric strong {
+                display: block;
+                font-size: 20px
+            }
+
+            .metric.accent {
+                background: var(--teal);
+                color: #fff
+            }
+
+        .table {
+            overflow: auto;
+            border: 1px solid var(--line);
+            border-radius: 10px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 12px
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #edf2f1;
+            white-space: nowrap
+        }
+
+        th {
+            background: #f5faf8;
+            color: #63767a;
+            font-size: 10px;
+            text-transform: uppercase
+        }
+
+            td:last-child, th:last-child {
+                text-align: right
+            }
+
+        .mono {
+            font-family: monospace;
+            color: #526b70;
+            font-size: 11px
+        }
+
+        .link {
+            margin-top: 15px;
+            background: #f7faf9;
+            padding: 12px;
+            border-radius: 10px
+        }
+
+        .linkrow {
+            display: flex;
+            gap: 7px;
+            margin-top: 8px
+        }
+
+        .empty {
+            text-align: center;
+            color: var(--muted);
+            padding: 35px 10px
+        }
+
+        .footer {
+            text-align: center;
+            color: #9aa9aa;
+            font-size: 11px;
+            margin-top: 22px
+        }
+
+        @media(max-width:1100px) {
+            .columns {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .result {
+                grid-column: 1/-1
+            }
+        }
+
+        @media(max-width:700px) {
+            .app {
+                padding: 18px 12px
+            }
+
+            header {
+                display: block
+            }
+
+            .actions {
+                margin-top: 15px
+            }
+
+            .columns {
+                display: block
+            }
+
+            .card {
+                margin-bottom: 18px
+            }
+
+            .twocol {
+                display: block
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="app">
+        <header>
+            <div class="brand">
+                <div class="logo">C</div>
+                <div>
+                    <div class="eyebrow">AP Pension · rådgiverprototype</div>
+                    <h1>CisTisp</h1>
+                    <div class="sub">Fra kundens investeringsvalg til en analyserbar portefølje</div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="resetButton">Nulstil</button>
+                <button class="btn primary" id="presetButton">Indlæs standardanbefaling</button>
+            </div>
+        </header>
+
+        <section class="columns">
+            <article class="card">
+                <div class="head">
+                    <div><div class="eyebrow">01 · Input</div><h2>Kundevalg</h2></div>
+                    <span class="step">KONFIGURÉR</span>
+                </div>
+
+                <div class="body">
+                    <div class="total">
+                        <label for="portfolioAmount">Samlet porteføljeværdi</label>
+                        <strong>kr. <span id="portfolioValue">500.000</span></strong>
+                        <small>Værdien bruges til hvert valg</small>
+                        <input id="portfolioAmount" type="number" value="500000" min="1">
+                    </div>
+
+                    <div id="selections"></div>
+
+                    <button class="btn primary" id="addSelection" style="width:100%">
+                        ＋ Tilføj investeringsvalg
+                    </button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="head">
+                    <div><div class="eyebrow">02 · Mapping</div><h2>Oversættelse</h2></div>
+                    <span class="step">CISTISP</span>
+                </div>
+                <div class="body" id="mappings"></div>
+            </article>
+
+            <article class="card result">
+                <div class="head">
+                    <div><div class="eyebrow">03 · Output</div><h2>Samlet portefølje</h2></div>
+                    <span class="step">FONDLISTE</span>
+                </div>
+                <div class="body" id="results"></div>
+            </article>
+        </section>
+
+        <div class="footer">
+            Prototype · Mapping-konfiguration v1.0 · Vægte vises afrundet til to decimaler
+        </div>
+    </main>
+
+    <script>const selfSelectorFunds = [
+"AP Asien ex. Japan Aktier",
+"AP Danske Aktier",
+"AP Danske Aktier II",
+"AP Emerging Markets Aktier",
+"AP Europa Aktier ESG Indeks SYN",
+"AP Globale Aktier ESG Indeks SYN",
+"AP Globale Aktier II",
+"AP Globale Value Aktier",
+"AP Globale Value Aktier II",
+"AP High Yield Obligationer",
+"AP Invest Ejendomme",
+"AP Invest Ejendomme Danmark",
+"AP Invest Korte Obligationer",
+"AP Invest Private Equity",
+"AP Invest Vedvarende Energiinfrastruktur",
+"AP Obligationer",
+"AP USA Aktier ESG Indeks SYN",
+"AP Verden og Danmark Aktier Indeks SYN",
+"C WorldWide Asien Aktie SYN",
+"C WorldWide Global Aktier SYN",
+"Fidelity Globale Teknologi Aktier SYN",
+"Ninety One Europa Aktier SYN",
+"SEB Europa Small Cap Aktier SYN",
+"Sparinvest AP Emerging Markets Debt",
+"Sparinvest Index Emerging Markets Aktier SYN",
+"Sparinvest Index Global Aktier Min. Risiko SYN",
+"Sparinvest Index MSCI ACWI SYN",
+"Sparinvest Index S&P 500 SYN",
+"Sparinvest Index STOXX Europe 600 SYN",
+"Sparinvest Mellemlange Obl. SYN",
+"TRP US Large Cap Growth Aktier SYN",
+"TRP US Smaller Companies Aktier SYN"
+];
+
+const config = {
+lifecycle: {
+label: "Livscyklus",
+products: ["Active","Omtanke","Basis"],
+risks: ["Høj","Mellem","Lav"],
+funds: {
+Active: [
+["AP Active Global","F00002701P",42],
+["AP Active Bonds","F00002701Q",33],
+["AP Active Alternatives","F00002701R",25]
+],
+Omtanke: [
+["AP Omtanke Global","F00002702P",38],
+["AP Omtanke Bonds","F00002702Q",37],
+["AP Omtanke Alternatives","F00002702R",25]
+],
+Basis: [
+["AP Basis Global","F00002703P",28],
+["AP Basis Bonds","F00002703Q",52],
+["AP Basis Alternatives","F00002703R",20]
+]
+}
+},
+
+fixed: {
+label: "Fastprofil",
+products: ["Active","Omtanke","Basis"],
+risks: [
+"Lille aktieandel",
+"Mellem aktieandel",
+"Stor aktieandel",
+"Meget stor aktieandel"
+],
+funds: {
+Active: [
+["AP Active Global","F00002701P",65],
+["AP Active Bonds","F00002701Q",35]
+],
+Omtanke: [
+["AP Omtanke Global","F00002702P",50],
+["AP Omtanke Bonds","F00002702Q",50]
+],
+Basis: [
+["AP Basis Global","F00002703P",30],
+["AP Basis Bonds","F00002703Q",70]
+]
+}
+},
+
+average: {
+label: "Gennemsnitsrente",
+products: ["AP Stabil"],
+funds: {
+"AP Stabil": [
+["AP Stabil","F00002710S",100]
+]
+}
+},
+
+self: {
+label: "Selvvælger",
+products: selfSelectorFunds,
+funds: Object.fromEntries(
+selfSelectorFunds.map((fund,index) => [
+fund,
+[[fund,`PLACEHOLDER-${String(index + 1).padStart(2,"0")}`,100]]
+])
+)
+}
+};
+
+let selections = [];
+let nextId = 1;
+
+const $ = id => document.getElementById(id);
+
+const money = value =>
+new Intl.NumberFormat("da-DK", {
+maximumFractionDigits: 0
+}).format(value);
+
+const percent = value =>
+value.toLocaleString("da-DK", {
+minimumFractionDigits: 2,
+maximumFractionDigits: 2
+}) + " %";
+
+function render() {
+$("portfolioValue").textContent =
+money(+$("portfolioAmount").value || 0);
+
+renderSelections();
+renderMappings();
+renderResults();
+}
+
+function renderSelections() {
+$("selections").innerHTML = selections.map((selection,index) => {
+const type = config[selection.type];
+const simple =
+selection.type === "self" ||
+selection.type === "average";
+
+return `
+<div class="choice">
+<button class="close" onclick="removeSelection(${selection.id})">×</button>
+
+<h3>
+Investeringsvalg ${index + 1}
+<span class="pill">${type.label}</span>
+</h3>
+
+<div class="twocol">
+<div class="field">
+<label>Investeringstype</label>
+<select onchange="changeType(${selection.id},this.value)">
+${Object.keys(config).map(key => `
+<option value="${key}" ${key === selection.type ? "selected" : ""}>
+${config[key].label}
+</option>
+`).join("")}
+</select>
+</div>
+
+<div class="field">
+<label>Produkt / valg</label>
+<select onchange="updateSelection(${selection.id},'product',this.value)">
+${type.products.map(product => `
+<option ${product === selection.product ? "selected" : ""}>
+${product}
+</option>
+`).join("")}
+</select>
+</div>
+</div>
+
+${simple ? "" : `
+<div class="twocol">
+<div class="field">
+<label>${selection.type === "fixed" ? "Aktieandel" : "Risikoniveau"}</label>
+<select onchange="updateSelection(${selection.id},'risk',this.value)">
+${type.risks.map(risk => `
+<option ${risk === selection.risk ? "selected" : ""}>
+${risk}
+</option>
+`).join("")}
+</select>
+</div>
+
+${selection.type === "lifecycle" ? `
+<div class="field">
+<label>Tid til pension</label>
+<select onchange="updateSelection(${selection.id},'years',this.value)">
+${[0,5,10,15,20,25,30].map(year => `
+<option value="${year}" ${year == selection.years ? "selected" : ""}>
+${year} år
+</option>
+`).join("")}
+</select>
+</div>
+` : "<div></div>"}
+</div>
+`}
+
+<label>Andel af samlet portefølje</label>
+
+<div style="display:flex;gap:10px;align-items:center">
+<input
+type="number"
+min="0"
+max="100"
+step=".01"
+value="${selection.share}"
+onchange="updateSelection(${selection.id},'share',this.value)"
+>
+
+<b style="color:var(--teal);white-space:nowrap">
+${money((+$("portfolioAmount").value || 0) * selection.share / 100)} kr.
+</b>
+</div>
+</div>
+`;
+}).join("") || `
+<div class="empty">
+Ingen investeringsvalg endnu.<br>
+Tilføj det første valg for at komme i gang.
+</div>
+`;
+}
+
+function renderMappings() {
+$("mappings").innerHTML = selections.map((selection,index) => {
+const type = config[selection.type];
+
+return `
+<div class="translation">
+<div class="transhead">
+<div>
+<b>Sub-portefølje ${index + 1} · ${selection.product}</b><br>
+<small>
+${type.label}
+${selection.type === "lifecycle"
+? ` · ${selection.risk} · ${selection.years} år`
+: ""}
+</small>
+</div>
+<span class="pill">${percent(selection.share)}</span>
+</div>
+
+<div class="rule">
+Fordelingsregel
+<b>
+${selection.type === "self"
+? "Direkte fondvalg"
+: `v1.0 · ${selection.product}`}
+</b>
+</div>
+
+${type.funds[selection.product].map(fund => `
+<div class="fund">
+<span>
+${fund[0]}
+<span class="mono">${fund[1]}</span>
+</span>
+<b>${fund[2].toLocaleString("da-DK",{minimumFractionDigits:2})} %</b>
+</div>
+`).join("")}
+</div>
+`;
+}).join("") || `
+<div class="empty">
+Oversættelsen vises, når du tilføjer et kundevalg.
+</div>
+`;
+}
+
+function calculatePortfolio() {
+const funds = new Map();
+let hasUnboundSelfSelector = false;
+
+selections.forEach(selection => {
+if (selection.type === "self") {
+hasUnboundSelfSelector = true;
+}
+
+const mappedFunds =
+config[selection.type].funds[selection.product];
+
+mappedFunds.forEach(fund => {
+const existing = funds.get(fund[1]) || {
+name: fund[0],
+id: fund[1],
+weight: 0
+};
+
+existing.weight += selection.share * fund[2] / 10000;
+funds.set(fund[1],existing);
+});
+});
+
+const rows = [...funds.values()].map(fund => ({
+...fund,
+displayedWeight: +fund.weight.toFixed(2)
+}));
+
+const correction = +(
+100 - rows.reduce((sum,row) => sum + row.displayedWeight,0)
+).toFixed(2);
+
+if (rows.length) {
+rows[0].displayedWeight =
++(rows[0].displayedWeight + correction).toFixed(2);
+}
+
+return {
+rows,
+hasUnboundSelfSelector
+};
+}
+
+function renderResults() {
+const total = selections.reduce(
+(sum,selection) => sum + (+selection.share || 0),
+0
+);
+
+const result = calculatePortfolio();
+const valid =
+selections.length > 0 &&
+Math.abs(total - 100) < 0.001;
+
+const table = result.rows.length
+? `
+<div class="table">
+<table>
+<thead>
+<tr>
+<th>Fond</th>
+<th>Morningstar SecID</th>
+<th>Vægt</th>
+</tr>
+</thead>
+<tbody>
+${result.rows.map(row => `
+<tr>
+<td>${row.name}</td>
+<td class="mono">${row.id}</td>
+<td><b>${percent(row.displayedWeight)}</b></td>
+</tr>
+`).join("")}
+</tbody>
+</table>
+</div>
+`
+: `<div class="empty">Resultatet bliver vist her.</div>`;
+
+const link = valid && !result.hasUnboundSelfSelector
+? "https://appension.fondliste.dk/da/2/portfolio/analysis?holdings=" +
+encodeURIComponent(JSON.stringify(
+result.rows.map(row => ({
+securityId: row.id,
+weight: row.displayedWeight
+}))
+))
+: "";
+
+$("results").innerHTML = `
+${valid ? "" : `
+<div class="notice error">
+${
+selections.length
+? `Fordelingen er ${percent(total)}.
+Den skal være præcis 100 %.`
+: "Tilføj mindst ét investeringsvalg."
+}
+</div>
+`}
+
+<div class="metrics">
+<div class="metric accent">
+<small>Samlet portefølje</small>
+<strong>kr. ${money(+$("portfolioAmount").value || 0)}</strong>
+</div>
+
+<div class="metric">
+<small>Fordeling</small>
+<strong>${percent(total)}</strong>
+<small>${valid ? "✓ Klar til analyse" : "Afventer validering"}</small>
+</div>
+</div>
+
+<h3 style="margin-bottom:9px">
+Aggregerede beholdninger
+<span style="float:right;color:var(--teal)">
+${valid ? "100,00 %" : "—"}
+</span>
+</h3>
+
+${table}
+
+${valid && result.hasUnboundSelfSelector ? `
+<div class="notice error">
+Fondliste-linket er blokeret:
+Selvvælger har ubundne SecID’er.
+</div>
+` : ""}
+
+${link ? `
+<div class="link">
+<b>Appension / Fondliste</b>
+<div class="linkrow">
+<input id="appensionLink" readonly value="${link}">
+<button class="btn primary" id="copyLink">Kopiér link</button>
+</div>
+</div>
+` : ""}
+`;
+
+const copyButton = document.getElementById("copyLink");
+
+if (copyButton) {
+copyButton.onclick = async () => {
+await navigator.clipboard.writeText(link);
+copyButton.textContent = "Kopieret ✓";
+};
+}
+}
+
+function updateSelection(id,key,value) {
+const selection = selections.find(item => item.id === id);
+
+selection[key] =
+key === "share" || key === "years"
+? Number(value)
+: value;
+
+render();
+}
+
+function changeType(id,type) {
+const selection = selections.find(item => item.id === id);
+
+selection.type = type;
+selection.product = config[type].products[0];
+selection.risk = config[type].risks?.[1] || "";
+
+render();
+}
+
+function removeSelection(id) {
+selections = selections.filter(item => item.id !== id);
+render();
+}
+
+document
+.getElementById("addSelection")
+.addEventListener("click",() => {
+selections.push({
+id: nextId++,
+type: "lifecycle",
+product: "Active",
+risk: "Mellem",
+years: 15,
+share: 0
+});
+
+render();
+});
+
+document
+.getElementById("portfolioAmount")
+.addEventListener("input",render);
+
+document
+.getElementById("resetButton")
+.addEventListener("click",() => {
+selections = [];
+render();
+});
+
+document
+.getElementById("presetButton")
+.addEventListener("click",() => {
+selections = [
+{
+id: nextId++,
+type: "lifecycle",
+product: "Active",
+risk: "Mellem",
+years: 15,
+share: 66.67
+},
+{
+id: nextId++,
+type: "lifecycle",
+product: "Omtanke",
+risk: "Mellem",
+years: 15,
+share: 33.33
+}
+];
+
+render();
+});
+
+document.getElementById("presetButton").click();</script>
+</body>
+</html>
