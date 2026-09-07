@@ -1,62 +1,62 @@
-# PRD – CisTisp Prototype
+# PRD â€“ CisTisp Prototype
 
 ## 1. Produktvision
 
-CisTisp (**Customer Investment Selection Translator Into SecID Portfolio**) oversætter kundens investeringsvalg i Flex-universet til en vægtet portefølje af Morningstar SecID’er, som kan analyseres i Appension/Fondliste.
+CisTisp (**Customer Investment Selection Translator Into SecID Portfolio**) oversÃ¦tter kundens investeringsvalg i Flex-universet til en vÃ¦gtet portefÃ¸lje af Morningstar SecIDâ€™er, som kan analyseres i Appension/Fondliste.
 
 Prototypen skal demonstrere:
 
-**Kundevalg ? CisTisp ? SecID’er og vægte ? Appension-analyse**
+**Kundevalg ? CisTisp ? SecIDâ€™er og vÃ¦gte ? Appension-analyse**
 
 ## 2. Problem
 
-Flex-universet er profilbaseret, mens analyseværktøjet forventer konkrete fonds-ID’er og vægte.
+Flex-universet er profilbaseret, mens analysevÃ¦rktÃ¸jet forventer konkrete fonds-IDâ€™er og vÃ¦gte.
 
-Kunden vælger blandt andet:
+Kunden vÃ¦lger blandt andet:
 
 - Livscyklus
 - Fastprofil
-- Selvvælger
+- SelvvÃ¦lger
 - Gennemsnitsrente
 - Produkt eller investeringsvalg
 - Risikoniveau, hvor det er relevant
 - Tid til pension for Livscyklus
 - Fordeling mellem flere investeringsvalg
 
-Kunden vælger ikke nødvendigvis de underliggende risikofonde direkte. Der mangler derfor et oversættelseslag mellem kundevalget og de konkrete fonds-ID’er.
+Kunden vÃ¦lger ikke nÃ¸dvendigvis de underliggende risikofonde direkte. Der mangler derfor et oversÃ¦ttelseslag mellem kundevalget og de konkrete fonds-IDâ€™er.
 
-Hvert investeringsvalg skal holdes i sin egen sub-portefølje, indtil sub-porteføljerne samles til den endelige portefølje.
+Hvert investeringsvalg skal holdes i sin egen sub-portefÃ¸lje, indtil sub-portefÃ¸ljerne samles til den endelige portefÃ¸lje.
 
-## 3. Mål
+## 3. MÃ¥l
 
 Prototypen skal kunne:
 
 1. Modtage et eller flere investeringsvalg.
-2. Gruppere hvert investeringsvalg i sin egen sub-portefølje.
-3. Oversætte Livscyklus og Fastprofil til underliggende risikofonde via konfigurerede fordelingsregler.
-4. Håndtere Gennemsnitsrente med produktet AP Stabil.
-5. Håndtere Selvvælger med 32 individuelle fonde, som senere bindes direkte til vores fondsliste.
+2. Gruppere hvert investeringsvalg i sin egen sub-portefÃ¸lje.
+3. OversÃ¦tte Livscyklus og Fastprofil til underliggende risikofonde via konfigurerede fordelingsregler.
+4. HÃ¥ndtere Gennemsnitsrente med produktet AP Stabil.
+5. HÃ¥ndtere SelvvÃ¦lger med 32 individuelle fonde, som senere bindes direkte til vores fondsliste.
 6. Knytte risikofonde til deres unikke Morningstar SecID.
-7. Beregne og aggregere vægte i sub-porteføljerne.
-8. Samle sub-porteføljerne til en samlet portefølje.
-9. Vise porteføljesammensætning og beholdningsdata.
-10. Generere et link til Appension/Fondliste med SecID’er og vægte.
+7. Beregne og aggregere vÃ¦gte i sub-portefÃ¸ljerne.
+8. Samle sub-portefÃ¸ljerne til en samlet portefÃ¸lje.
+9. Vise portefÃ¸ljesammensÃ¦tning og beholdningsdata.
+10. Generere et link til Appension/Fondliste med SecIDâ€™er og vÃ¦gte.
 
 ## 4. Brugere
 
-### Primære brugere
+### PrimÃ¦re brugere
 
-- Rådgivere og mæglere.
+- RÃ¥dgivere og mÃ¦glere.
 - Kunder med opsparing i AP Pension.
 
 ### Prototypebrugere
 
-- En rådgiver, der vil vise, hvad kundens investeringsvalg består af.
+- En rÃ¥dgiver, der vil vise, hvad kundens investeringsvalg bestÃ¥r af.
 - En kunde, der vil simulere konsekvenserne af nye investeringsvalg.
 
 ## 5. MVP-scope
 
-Der skal være en enkel webfront, hvor brugeren kan sammensætte sin portefølje af flere investeringsvalg.
+Der skal vÃ¦re en enkel webfront, hvor brugeren kan sammensÃ¦tte sin portefÃ¸lje af flere investeringsvalg.
 
 For hvert investeringsvalg skal brugeren kunne angive:
 
@@ -64,22 +64,22 @@ For hvert investeringsvalg skal brugeren kunne angive:
 - Produkt eller investeringsvalg.
 - Relevant risikovalg.
 - Relevant tid til pension.
-- Andel af den samlede portefølje i procent.
+- Andel af den samlede portefÃ¸lje i procent.
 
-Alle beløb er i DKK.
+Alle belÃ¸b er i DKK.
 
 Prototypen skal vise:
 
-- Den samlede porteføljeværdi.
+- Den samlede portefÃ¸ljevÃ¦rdi.
 - Fordelingen mellem investeringsvalgene.
-- Den anvendte oversættelsesregel.
+- Den anvendte oversÃ¦ttelsesregel.
 - De underliggende fonde.
-- Morningstar SecID’er.
-- Beregnede vægte.
-- Samlet portefølje.
+- Morningstar SecIDâ€™er.
+- Beregnede vÃ¦gte.
+- Samlet portefÃ¸lje.
 - Link til Appension/Fondliste.
 
-Fordelingsreglerne baseres i første omgang på manuelt transskriberede screendumps og gemmes i versionerede JSON-filer.
+Fordelingsreglerne baseres i fÃ¸rste omgang pÃ¥ manuelt transskriberede screendumps og gemmes i versionerede JSON-filer.
 
 ## 6. Produkter og valgmuligheder
 
@@ -93,22 +93,22 @@ Investeringsvalg:
 
 Risikovalg:
 
-- Høj
+- HÃ¸j
 - Mellem
 - Lav
 
 Tid til pension:
 
-- 0–30 år
+- 0â€“30 Ã¥r
 
-Livscyklus har både:
+Livscyklus har bÃ¥de:
 
 - Andel i procent.
-- Værdi af andelen i DKK.
+- VÃ¦rdi af andelen i DKK.
 
-Andelens værdi beregnes ud fra den samlede porteføljeværdi:
+Andelens vÃ¦rdi beregnes ud fra den samlede portefÃ¸ljevÃ¦rdi:
 
-`andelens værdi = samlet porteføljeværdi × andel i procent / 100`
+`andelens vÃ¦rdi = samlet portefÃ¸ljevÃ¦rdi Ã— andel i procent / 100`
 
 ### 6.2 Fastprofil
 
@@ -125,7 +125,7 @@ Risikovalg:
 - Stor aktieandel
 - Meget stor aktieandel
 
-Fastprofil har ikke noget valg for tid til pension eller udløb.
+Fastprofil har ikke noget valg for tid til pension eller udlÃ¸b.
 
 ### 6.3 Gennemsnitsrente
 
@@ -135,87 +135,87 @@ Gennemsnitsrente indeholder kun:
 
 Der er ikke behov for valg af risikoniveau eller tid til pension for Gennemsnitsrente.
 
-### 6.4 Selvvælger
+### 6.4 SelvvÃ¦lger
 
-Selvvælger indeholder 32 individuelle fonde.
+SelvvÃ¦lger indeholder 32 individuelle fonde.
 
-De 32 fonde har allerede unikke SecID’er, men de skal ikke mappes gennem CisTisps fordelingsregler. De skal senere bindes direkte til vores fondsliste, når fondlisten leveres.
+De 32 fonde har allerede unikke SecIDâ€™er, men de skal ikke mappes gennem CisTisps fordelingsregler. De skal senere bindes direkte til vores fondsliste, nÃ¥r fondlisten leveres.
 
-I prototypen kan pladserne håndteres som placeholders, indtil fondlisten er tilgængelig.
+I prototypen kan pladserne hÃ¥ndteres som placeholders, indtil fondlisten er tilgÃ¦ngelig.
 
-## 7. Primært brugerflow
+## 7. PrimÃ¦rt brugerflow
 
-1. Brugeren åbner prototypen.
-2. Brugeren tilføjer et investeringsvalg.
-3. Brugeren vælger investeringstype.
-4. Brugeren vælger produkt eller investeringsvalg.
-5. Brugeren vælger relevant risikoniveau.
-6. Brugeren vælger tid til pension, hvis investeringstypen er Livscyklus.
+1. Brugeren Ã¥bner prototypen.
+2. Brugeren tilfÃ¸jer et investeringsvalg.
+3. Brugeren vÃ¦lger investeringstype.
+4. Brugeren vÃ¦lger produkt eller investeringsvalg.
+5. Brugeren vÃ¦lger relevant risikoniveau.
+6. Brugeren vÃ¦lger tid til pension, hvis investeringstypen er Livscyklus.
 7. Brugeren angiver investeringsvalgets andel i procent.
-8. Brugeren kan tilføje flere investeringsvalg.
-9. Systemet viser andelens værdi i DKK, hvor det er relevant.
+8. Brugeren kan tilfÃ¸je flere investeringsvalg.
+9. Systemet viser andelens vÃ¦rdi i DKK, hvor det er relevant.
 10. Systemet validerer, at de samlede andele er 100 %.
 11. CisTisp anvender de konfigurerede fordelingsregler.
-12. Hvert investeringsvalg oversættes til sin egen sub-portefølje.
-13. Resultater med samme SecID lægges sammen.
-14. Den samlede portefølje vises.
-15. Brugeren kan åbne eller kopiere et Appension/Fondliste-link.
+12. Hvert investeringsvalg oversÃ¦ttes til sin egen sub-portefÃ¸lje.
+13. Resultater med samme SecID lÃ¦gges sammen.
+14. Den samlede portefÃ¸lje vises.
+15. Brugeren kan Ã¥bne eller kopiere et Appension/Fondliste-link.
 
 ## 8. Forretningsregler
 
-1. En samlet portefølje består af en procentandel af Livscyklus, Fastprofil, Selvvælger og/eller Gennemsnitsrente.
+1. En samlet portefÃ¸lje bestÃ¥r af en procentandel af Livscyklus, Fastprofil, SelvvÃ¦lger og/eller Gennemsnitsrente.
 2. Brugeren skal kunne angive procentandelen for hvert investeringsvalg.
-3. Summen af alle investeringsvalg skal være 100 %.
+3. Summen af alle investeringsvalg skal vÃ¦re 100 %.
 4. Livscyklus indeholder Active, Omtanke og Basis.
 5. Fastprofil indeholder Active, Omtanke og Basis.
 6. Active, Basis og Omtanke er investeringsvalg under Livscyklus og Fastprofil.
-7. Livscyklus har risikoniveauerne Høj, Mellem og Lav.
-8. Livscyklus har tid til pension fra 0 til 30 år.
+7. Livscyklus har risikoniveauerne HÃ¸j, Mellem og Lav.
+8. Livscyklus har tid til pension fra 0 til 30 Ã¥r.
 9. Fastprofil har risikovalgene Lille aktieandel, Mellem aktieandel, Stor aktieandel og Meget stor aktieandel.
-10. Fastprofil har ingen tid til pension eller udløb.
+10. Fastprofil har ingen tid til pension eller udlÃ¸b.
 11. Gennemsnitsrente indeholder kun AP Stabil.
-12. Kunden vælger ikke de underliggende risikofonde direkte for Livscyklus og Fastprofil.
+12. Kunden vÃ¦lger ikke de underliggende risikofonde direkte for Livscyklus og Fastprofil.
 13. Risikoniveau og tid til pension bestemmer fordelingsreglen for Livscyklus og Fastprofil, hvor det er relevant.
-14. En risikofond er samtidig en intern fond og udgør ikke et separat fondslag.
-15. Hver risikofond har præcis ét unikt Morningstar SecID.
-16. Selvvælgerfondene har allerede unikke SecID’er og skal ikke mappes gennem fordelingsregler.
-17. Selvvælgerfondene skal senere bindes direkte til vores fondsliste.
-18. Sub-porteføljerne holdes adskilt, indtil den samlede portefølje beregnes.
-19. Den underliggende fondsvægt beregnes som:
+14. En risikofond er samtidig en intern fond og udgÃ¸r ikke et separat fondslag.
+15. Hver risikofond har prÃ¦cis Ã©t unikt Morningstar SecID.
+16. SelvvÃ¦lgerfondene har allerede unikke SecIDâ€™er og skal ikke mappes gennem fordelingsregler.
+17. SelvvÃ¦lgerfondene skal senere bindes direkte til vores fondsliste.
+18. Sub-portefÃ¸ljerne holdes adskilt, indtil den samlede portefÃ¸lje beregnes.
+19. Den underliggende fondsvÃ¦gt beregnes som:
 
-    `inputvægt × fordelingsvægt`
+    `inputvÃ¦gt Ã— fordelingsvÃ¦gt`
 
-20. Identiske SecID’er skal aggregeres.
-21. Summen af outputvægtene skal være 100 %.
-22. Beregninger skal udføres med høj præcision.
-23. Vægte vises med to decimaler.
-24. Efter afrunding justeres den største post, hvis det er nødvendigt for at få den viste sum til 100 %.
+20. Identiske SecIDâ€™er skal aggregeres.
+21. Summen af outputvÃ¦gtene skal vÃ¦re 100 %.
+22. Beregninger skal udfÃ¸res med hÃ¸j prÃ¦cision.
+23. VÃ¦gte vises med to decimaler.
+24. Efter afrunding justeres den stÃ¸rste post, hvis det er nÃ¸dvendigt for at fÃ¥ den viste sum til 100 %.
 25. Manglende SecID i en mapping for Livscyklus, Fastprofil eller Gennemsnitsrente er en valideringsfejl.
-26. Et Selvvælger-slot uden binding til fondlisten kan vises som placeholder, men må ikke bruges til at generere et endeligt link.
+26. Et SelvvÃ¦lger-slot uden binding til fondlisten kan vises som placeholder, men mÃ¥ ikke bruges til at generere et endeligt link.
 27. Beregningsregler og mappings skal ligge i konfiguration og ikke i UI-koden.
 
 ## 9. Inputvalidering
 
 Systemet skal validere:
 
-- Påkrævede felter.
+- PÃ¥krÃ¦vede felter.
 - Gyldig investeringstype.
 - Gyldigt produkt eller investeringsvalg.
 - Gyldigt risikoniveau.
-- Tid til pension mellem 0 og 30 år for Livscyklus.
+- Tid til pension mellem 0 og 30 Ã¥r for Livscyklus.
 - Ingen tid til pension for Fastprofil.
 - Andele mellem 0 og 100 %.
-- Samlet porteføljefordeling på præcis 100 %.
-- Positiv samlet porteføljeværdi, hvis den angives.
+- Samlet portefÃ¸ljefordeling pÃ¥ prÃ¦cis 100 %.
+- Positiv samlet portefÃ¸ljevÃ¦rdi, hvis den angives.
 - At fordelingsregler summerer til 100 %.
-- At alle nødvendige risikofonde har et SecID.
-- At Selvvælger-fonde er bundet til fondlisten, før et endeligt link genereres.
+- At alle nÃ¸dvendige risikofonde har et SecID.
+- At SelvvÃ¦lger-fonde er bundet til fondlisten, fÃ¸r et endeligt link genereres.
 
-Hvis inputvægtene ikke summerer til 100 %, skal systemet afvise beregningen og vise en tydelig fejl. Automatisk normalisering er ikke standardadfærd.
+Hvis inputvÃ¦gtene ikke summerer til 100 %, skal systemet afvise beregningen og vise en tydelig fejl. Automatisk normalisering er ikke standardadfÃ¦rd.
 
 ## 10. Standardanbefaling
 
-Brugeren skal kunne indlæse en preset med:
+Brugeren skal kunne indlÃ¦se en preset med:
 
 - 66,67 % Active.
 - 33,33 % Omtanke.
@@ -237,15 +237,15 @@ Konfigurationen skal kunne indeholde:
 - Risikoniveau.
 - Tid til pension, hvis relevant.
 - Underliggende risikofonde.
-- Fordelingsvægt.
+- FordelingsvÃ¦gt.
 - Unikt SecID.
-- Selvvælger-slots og senere binding til fondlisten.
+- SelvvÃ¦lger-slots og senere binding til fondlisten.
 
-Den første version af mappings baseres på manuelt transskriberede screendumps. Senere kan maskinel levering, upload eller API understøttes.
+Den fÃ¸rste version af mappings baseres pÃ¥ manuelt transskriberede screendumps. Senere kan maskinel levering, upload eller API understÃ¸ttes.
 
 ## 12. Appension/Fondliste-link
 
-Linket skal genereres med følgende format:
+Linket skal genereres med fÃ¸lgende format:
 
 `https://appension.fondliste.dk/da/2/portfolio/analysis?holdings=...`
 
@@ -254,7 +254,7 @@ Parameteren `holdings` indeholder en URL-encodet JSON-liste med:
 - `securityId`
 - `weight`
 
-Eksempel på data i linket:
+Eksempel pÃ¥ data i linket:
 
 ```json
 [
@@ -269,11 +269,11 @@ Eksempel på data i linket:
 ]
 ```
 
-Linket skal kunne åbnes og kopieres fra resultatvisningen.
+Linket skal kunne Ã¥bnes og kopieres fra resultatvisningen.
 
 ## 13. UI-krav
 
-Prototypen skal have tre hovedområder:
+Prototypen skal have tre hovedomrÃ¥der:
 
 ### Kundevalg
 
@@ -284,17 +284,17 @@ Formular til:
 - Relevant risiko.
 - Tid til pension for Livscyklus.
 - Andel i procent.
-- Samlet porteføljeværdi i DKK.
-- Tilføjelse, redigering og sletning af investeringsvalg.
+- Samlet portefÃ¸ljevÃ¦rdi i DKK.
+- TilfÃ¸jelse, redigering og sletning af investeringsvalg.
 
-### Oversættelse
+### OversÃ¦ttelse
 
 Vis en forklaring af:
 
 - Hvilken fordelingsregel der anvendes.
 - Hvilke underliggende fonde der anvendes.
-- Fordelingsvægten for de underliggende fonde.
-- Hvilken sub-portefølje valget tilhører.
+- FordelingsvÃ¦gten for de underliggende fonde.
+- Hvilken sub-portefÃ¸lje valget tilhÃ¸rer.
 
 ### Resultat
 
@@ -302,38 +302,38 @@ Vis:
 
 - Fond.
 - Morningstar SecID.
-- Beregnet vægt.
-- Samlet porteføljevægt.
-- Samlet portefølje.
+- Beregnet vÃ¦gt.
+- Samlet portefÃ¸ljevÃ¦gt.
+- Samlet portefÃ¸lje.
 - Link til Appension/Fondliste.
 - Mulighed for at kopiere linket.
 
-UI’et skal være på dansk, fungere på desktop og være enkelt nok til en rådgiverdemo.
+UIâ€™et skal vÃ¦re pÃ¥ dansk, fungere pÃ¥ desktop og vÃ¦re enkelt nok til en rÃ¥dgiverdemo.
 
-## 14. Fejlhåndtering
+## 14. FejlhÃ¥ndtering
 
 - Feltfejl vises inline ved det relevante felt.
-- Beregningsfejl vises tydeligt ved beregningsområdet.
-- Manglende mappings eller SecID’er skal forklare, hvad der mangler.
-- Linkgenerering blokeres, hvis porteføljen indeholder ubundne Selvvælger-fonde.
-- Brugeren skal kunne se, hvorfor en beregning ikke kan gennemføres.
+- Beregningsfejl vises tydeligt ved beregningsomrÃ¥det.
+- Manglende mappings eller SecIDâ€™er skal forklare, hvad der mangler.
+- Linkgenerering blokeres, hvis portefÃ¸ljen indeholder ubundne SelvvÃ¦lger-fonde.
+- Brugeren skal kunne se, hvorfor en beregning ikke kan gennemfÃ¸res.
 
 ## 15. Acceptkriterier
 
-Prototypen accepteres, når:
+Prototypen accepteres, nÃ¥r:
 
 - Brugeren kan oprette, redigere og slette investeringsvalg.
 - Brugeren kan kombinere flere investeringstyper.
 - Livscyklus viser de korrekte produkter, risici og pensionshorisont.
 - Fastprofil viser de korrekte produkter og aktieandelsvalg uden pensionshorisont.
 - Gennemsnitsrente kun viser AP Stabil.
-- Selvvælger understøtter 32 slots som placeholders.
+- SelvvÃ¦lger understÃ¸tter 32 slots som placeholders.
 - Inputfordelingen valideres til 100 %.
-- Underliggende vægte beregnes korrekt.
-- Identiske SecID’er aggregeres korrekt.
-- Outputvægtene summerer til 100 %.
+- Underliggende vÃ¦gte beregnes korrekt.
+- Identiske SecIDâ€™er aggregeres korrekt.
+- OutputvÃ¦gtene summerer til 100 %.
 - Anvendte fordelingsregler vises.
 - Appension/Fondliste-link genereres i det aftalte format.
 - Linket kan kopieres.
-- Standardanbefalingen kan indlæses.
-- Demoen kan åbnes som en selvstændig HTML-fil uden serverafhængighed.
+- Standardanbefalingen kan indlÃ¦ses.
+- Demoen kan Ã¥bnes som en selvstÃ¦ndig HTML-fil uden serverafhÃ¦ngighed.
